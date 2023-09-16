@@ -15,7 +15,7 @@ jobs:
                   path: |
                       ~/.cache
                       ~/.ansible
-                  key: ansible-project-deps-${{ hashFiles('**/lockfiles') }}
+                  key: ansible-project-deps
             - name: Install Ansible Latest
               if: steps.cache-step.outputs.cache-hit != 'true'
               shell: pwsh
