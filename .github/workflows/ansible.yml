@@ -8,11 +8,21 @@ jobs:
     ansible-deploy:
         runs-on: ubuntu-latest
         steps:
+            - name: Caching
+              id: cache-step
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      ~/.cache
+                      ~/.ansible
+                  key: ansible-project-deps-${{ hashFiles('**/lockfiles') }}
             - name: Install Ansible Latest
+              if: steps.cache-step.outputs.cache-hit != 'true'
               shell: pwsh
               run: |
                   pip3 install ansible
             - name: Install the ansible galaxy collection
+              if: steps.cache-step.outputs.cache-hit != 'true'
               shell: pwsh
               run: |
                   ansible-galaxy collection install amazon.aws
