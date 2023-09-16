@@ -20,7 +20,7 @@ jobs:
               if: steps.cache-step.outputs.cache-hit != 'true'
               shell: pwsh
               run: |
-                  pip3 install ansible
+                  pip3 install ansible boto3
             - name: Install the ansible galaxy collection
               if: steps.cache-step.outputs.cache-hit != 'true'
               shell: pwsh
