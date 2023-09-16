@@ -16,7 +16,7 @@ jobs:
                       ~/.cache
                       ~/.ansible
                       /usr/local/lib/python3.10.12/dist-packages
-                  key: ansible-project-deps
+                  key: ansible-project-deps-cache
             - name: Install Ansible Latest
               if: steps.cache-step.outputs.cache-hit != 'true'
               shell: pwsh
