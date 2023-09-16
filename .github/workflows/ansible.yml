@@ -8,7 +8,6 @@ jobs:
     ansible-deploy:
         runs-on: ubuntu-latest
         steps:
-            - run: python --version
             - name: Caching
               id: cache-step
               uses: actions/cache@v3
@@ -16,7 +15,7 @@ jobs:
                   path: |
                       ~/.cache
                       ~/.ansible
-                    #   /usr/local/lib/python3
+                      /usr/local/lib/python3.10.12/dist-packages
                   key: ansible-project-deps
             - name: Install Ansible Latest
               if: steps.cache-step.outputs.cache-hit != 'true'
